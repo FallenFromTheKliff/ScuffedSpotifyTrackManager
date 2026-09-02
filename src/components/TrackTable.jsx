@@ -75,7 +75,6 @@ export default function TrackTable(props) {
 
   return (
     <div className="w-3xl">
-      <h2 className="text-2xl font-bold mb-4">Track Registry</h2>
       <div className="h-80 overflow-y-auto">
         <table className="w-full border-collapse border border-white octagonee-8 bg-white">
           <thead>
@@ -84,7 +83,7 @@ export default function TrackTable(props) {
           <tbody>{rows}</tbody>
         </table>
       </div>
-      <div className="flex justify-between items-center mt-4">
+      <div className="flex justify-center items-center gap-12">
         <button
           type="button"
           onClick={() => table.previousPage()}

@@ -40,14 +40,14 @@ function App() {
               <button
                 type="button"
                 onClick={() => setShowTracks(false)}
-                className="border rounded-lg bg-white px-5 py-3 font-bold"
+                className="rounded-lg bg-gray-700 text-white px-5 py-3 font-bold"
               >
                 GO BACK
               </button>
               <button
                 type="button"
                 onClick={() => setCreatorHighlight(!creatorHighlight)}
-                className="rounded-lg bg-white px-5 py-3 font-bold"
+                className="rounded-lg bg-gray-700 text-white px-5 py-3 font-bold"
               >
                 {creatorHighlight ? "SHOW ALL TRACKS" : "SHOW ONLY CREATORS"}
               </button>

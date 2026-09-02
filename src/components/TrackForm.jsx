@@ -69,7 +69,7 @@ export default function TrackForm(props) {
 
   return (
     <div className="w-xl h-full p-8 octagone-16 bg-white">
-      <form onSubmit={handleSubmit} className="flex flex-col items-center justify-center h-full">
+      <form onSubmit={handleSubmit} className="flex flex-col gap-2">
         <h4>Track Title</h4>
         <input 
           type="text"

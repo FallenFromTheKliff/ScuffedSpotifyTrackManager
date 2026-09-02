@@ -34,13 +34,13 @@ export default function TrackForm(props) {
       setRoleError("Please select a role!");
     } else if (!title) {
       setTitleError("Please enter a track title!");
-    } else if (title.length < 3) {
+    } else if (title.length <= 3) {
       setTitleError("Track title must be at least 3 characters long!");
     } else if (!genre) {
       setGenreError("Please select a genre!");
     } else if (!artist) {
       setArtistError("Please enter an artist name!");
-    } else if (artist.length < 3) {
+    } else if (artist.length <= 3) {
       setArtistError("Artist name must be at least 3 characters long!");
     }else if (!rating) {
       setRatingError("Please enter a valid rating!");
@@ -48,7 +48,7 @@ export default function TrackForm(props) {
       setRatingError("Rating / BPM must be between 1 and 100!");
     } else if (!label) {
       setLabelError("Please enter a label!");
-    } else if (label.length < 3) {
+    } else if (label.length <= 3) {
       setLabelError("Label name must be at least 3 characters long!");
     } else if (!role) {
       setRoleError("Please select a role!");
@@ -75,7 +75,7 @@ export default function TrackForm(props) {
   return (
     <div className="w-xl h-full p-8 octagonee-12 bg-white">
       <form onSubmit={handleSubmit} className="flex flex-col gap-2">
-        <h4>Track Title</h4>
+        <h4 className="font-bold">TITLE OF THE TRACK</h4>
         <input 
           type="text"
           value={title}
@@ -87,10 +87,11 @@ export default function TrackForm(props) {
               setTitleError("");
             }
           }}
+          className="border rounded-lg p-2"
           placeholder="Enter a track title"
         />
         <p className="text-red-500 text-xs h-4">{titleError}</p>
-        <h4>Genre</h4>
+        <h4 className="font-bold">GENRE OF THE TRACK</h4>
         <select
           value={genre}
           onChange={(iwantitthatway) => {
@@ -101,6 +102,7 @@ export default function TrackForm(props) {
               setGenreError("");
             }
           }}
+          className="border rounded-lg p-2"
         >
           <option value="">Select a genre!</option>
           <option value="Pop">Pop</option>
@@ -109,7 +111,7 @@ export default function TrackForm(props) {
           <option value="Indie">Indie</option>
         </select>
         <p className="text-red-500 text-xs h-4">{genreError}</p>
-        <h4>Artist Name</h4>
+        <h4 className="font-bold">NAME OF THE ARTIST</h4>
         <input 
           type="text"
           value={artist}
@@ -121,10 +123,11 @@ export default function TrackForm(props) {
               setArtistError("");
             }
           }}
+          className="border rounded-lg p-2"
           placeholder="Enter an artist name!"
         />
         <p className="text-red-500 text-xs h-4">{artistError}</p>
-        <h4>Rating / BPM</h4>
+        <h4 className="font-bold">RATING / BPM</h4>
         <input 
           type="number"
           min="1"
@@ -140,10 +143,11 @@ export default function TrackForm(props) {
               setRatingError("");
             }
           }}
+          className="border rounded-lg p-2"
           placeholder="Enter a rating between 1-100!"
         />
         <p className="text-red-500 text-xs h-4">{ratingError}</p>
-        <h4>Record Label Name</h4>
+        <h4 className="font-bold">NAME OF THE RECORD LABEL</h4>
         <input 
           type="text"
           value={label}
@@ -155,10 +159,11 @@ export default function TrackForm(props) {
               setLabelError("");
             }
           }}
+          className="border rounded-lg p-2"
           placeholder="Enter a record label name!"
         />
         <p className="text-red-500 text-xs h-4">{labelError}</p>
-        <h4>User Role</h4>
+        <h4 className="font-bold">ROLE OF THE USER</h4>
         <div className="flex flex-row gap-4">
           <input 
             type="radio"
@@ -170,7 +175,7 @@ export default function TrackForm(props) {
               setRoleError("");
             }}
           />
-          <h4>"Creator"</h4>
+          <h4>Creator</h4>
           <input
             type="radio"
             name="role"
@@ -181,10 +186,12 @@ export default function TrackForm(props) {
               setRoleError("");
             }}
           />
-          <h4>"Listener"</h4>
+          <h4>Listener</h4>
         </div>
         <p className="text-red-500 text-xs h-4">{roleError}</p>
-        <button type="submit" className="bg-green-500 text-white px-4 py-2 rounded-lg mt-4">ADD TRACK</button>
+        <button type="submit" className="bg-green-700 text-white font-bold p-3 octagonee-12 hover:bg-green-900 duration-200 cursor-pointer">
+          ADD TRACK
+        </button>
       </form>
     </div>
   )

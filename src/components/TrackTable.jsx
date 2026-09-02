@@ -20,8 +20,8 @@ export default function TrackTable(props) {
     },
     initialState: {
       pagination: {
-      pageSize: 5,
-      pageIndex: 0
+        pageSize: 5,
+        pageIndex: 0
       }
     }
    });
@@ -38,7 +38,7 @@ export default function TrackTable(props) {
     for (let j = 0; j < headerGroup.headers.length; j++) {
       const header = headerGroup.headers[j];
       headers.push(
-        <th key={header.id} className="border border-white px-4 py-2 text-center">
+        <th key={header.id} className="px-4 py-2 text-center">
           {header.column.columnDef.header}
         </th>
       );
@@ -48,19 +48,19 @@ export default function TrackTable(props) {
     const row = currentRows[i];
     const cells = row.getAllCells();
     const rowCells = [];
-    let rowClass = "hover:bg-green-500";
+    let rowClass = "hover:bg-green-300 duration-200 cursor-pointer";
 
     for (let j = 0; j < cells.length; j++) {
       const cell = cells[j];
       rowCells.push(
-        <td key={cell.id} className="border border-white px-3 py-2 text-center">
+        <td key={cell.id} className="px-3 py-2 text-center">
           {cell.getValue()}
         </td>
       );
     }
 
     if (props.creatorHighlight && row.original.role === "Creator") {
-      rowClass = "bg-green";
+      rowClass = "bg-green-200";
     }
     rows.push(
       <tr
@@ -74,9 +74,9 @@ export default function TrackTable(props) {
   }
 
   return (
-    <div className="w-3xl">
+    <div className="w-3xl p-2 bg-white octagonee-12">
       <div className="h-80 overflow-y-auto">
-        <table className="w-full border-collapse border border-white octagonee-8 bg-white">
+        <table className="w-full">
           <thead>
             <tr>{headers}</tr>
           </thead>
@@ -88,18 +88,18 @@ export default function TrackTable(props) {
           type="button"
           onClick={() => table.previousPage()}
           disabled={!table.getCanPreviousPage()}
-          className="rounded-lg bg-gray-700 text-white px-5 py-3 font-bold"
+          className="octagonee-12 bg-green-700 text-white px-6 py-3 font-bold hover:bg-green-900 duration-200 cursor-pointer"
         >
           PREV
         </button>
-        <div className="text-white font-bold">
+        <div className="font-bold">
           Page {table.state.pagination.pageIndex + 1} of {table.getPageCount()}
         </div>
         <button
           type="button"
           onClick={() => table.nextPage()}
           disabled={!table.getCanNextPage()}
-          className="rounded-lg bg-gray-700 text-white px-5 py-3 font-bold"
+          className="octagonee-12 bg-green-700 text-white px-6 py-3 font-bold hover:bg-green-900 duration-200 cursor-pointer"
         >
           NEXT
         </button>

@@ -1,0 +1,24 @@
+@import 'tailwindcss';
+
+@font-face {
+  font-family: 'ProximaNova';
+  src: url('./assets/fonts/proximanova.ttf') format('truetype');
+}
+
+@theme {
+  --font-spotify: 'ProximaNova', sans-serif;
+}
+
+@utility octagonee-* {
+  --clip-size: --value(integer)px;
+  clip-path: polygon(
+    var(--clip-size) 0,
+    calc(100% - var(--clip-size)) 0,
+    100% var(--clip-size),
+    100% calc(100% - var(--clip-size)),
+    calc(100% - var(--clip-size)) 100%,
+    var(--clip-size) 100%,
+    0 calc(100% - var(--clip-size)),
+    0 var(--clip-size)
+  )
+}

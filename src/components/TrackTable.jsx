@@ -55,7 +55,6 @@ export default function TrackTable(props) {
     if (props.creatorHighlight && row.original.role === "Creator") {
       rowClass = "bg-green";
     }
-
     rows.push(
       <tr
         key={row.id}
@@ -70,7 +69,7 @@ export default function TrackTable(props) {
   return (
     <div className="w-full">
       <h2 className="text-2xl font-bold mb-4">Track Registry</h2>
-      <table className="w-full border-collapse border border-white bg-white">
+      <table className="w-full border-collapse border border-white octagonee-12 bg-white">
         <thead>
           <tr>{headers}</tr>
         </thead>

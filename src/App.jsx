@@ -5,63 +5,75 @@ import TrackTable from './components/TrackTable';
 
 function App() {
   const [tracks, setTracks] = useState([]);
-  const [selectedTrack, setSelectedTrack] = useState("");
+  const [selectedTrack, setSelectedTrack] = useState(null);
   const [activeTrack, setActiveTrack] = useState("");
   const [creatorHighlight, setCreatorHighlight] = useState(false);
-  const [showRegistry, setShowRegistry] = useState(false);
+  const [showTracks, setShowTracks] = useState(false);
 
-  const handleAdd = (tracked) => {
-    setTracks((previousTracks) => [...previousTracks, tracked]);
-    setShowRegistry(true);
+  const handleAdd = (track) => {
+    setTracks((currentTracks) => [...currentTracks, track]);
   }
-
-  const handleRowSelection = (trackTitle) => {
-    setActiveTrack(trackTitle);
+  const handleRowSelection = (title) => {
+    setActiveTrack(title);
   }
-
-  const handleHighlight = () => {
-    setCreatorHighlight(!creatorHighlight);
-  };
 
   useEffect(() => {
     let selected = null;
-
     for (let i = 0; i < tracks.length; i++) {
       if (tracks[i].title === activeTrack) {
         selected = tracks[i];
         break;
       }
     }
-
     setSelectedTrack(selected);
   }, [activeTrack, tracks]);
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center bg-black">
-      <h1 className="text-4xl text-white font-spotify font-bold">Scuffed Spotify Track Manager</h1>
-      {!showRegistry && (
-        <TrackForm onAdd={handleAdd} />
-      )}
-      {showRegistry && (
-        <div>
-          <TrackTable 
-            tracks={tracks}
-            onSelectTrack={handleRowSelection}
-            creatorHighlight={creatorHighlight}
-          />
-          <div className="flex justify-center mt-6">
+    <div className="min-h-screen bg-black p-8">
+      <div className="w-full max-w-6xl item-center justify-center">
+        <h1 className="text-4xl text-green-500 font-spotify font-bold mb-8 text-center">
+          Scuffed Spotify Track Manager
+        </h1>
+        {showTracks ? (
+          <div>
+            <div className="flex justify-between mb-4">
+              <button
+                type="button"
+                onClick={() => setShowTracks(false)}
+                className="border octagonee-12 bg-white px-5 py-3 font-bold"
+              >
+                GO BACK
+              </button>
+              <button
+                type="button"
+                onClick={() => setCreatorHighlight(!creatorHighlight)}
+                className="border octagonee-12 bg-white px-5 py-3 font-bold"
+              >
+                {creatorHighlight ? "SHOW ALL TRACKS" : "SHOW ONLY CREATORS"}
+              </button>
+            </div>
+            <TrackTable
+              tracks={tracks}
+              onSelectTrack={handleRowSelection}
+              creatorHighlight={creatorHighlight}
+            />
+            {selectedTrack && <TrackCard track={selectedTrack} />}
+          </div>
+        ) : (
+          <div className="max-w-xl mx-auto">
+            <TrackForm onAddTrack={handleAdd} />
             <button
               type="button"
-              onClick={handleHighlight}
-              className="bg-green-500 px-4 py-2 rounded font-bold"
+              onClick={() => setShowTracks(true)}
+              className="border octagonee-12 bg-green-800 px-5 py-3 font-bold mt-4 w-full"
             >
-              {creatorHighlight ? "SHOW ALL TRACKS" : "HIGHLIGHT ONLY CREATORS"}
+              VIEW TRACKS
             </button>
           </div>
-        </div>
-      )}
+        )}
+      </div>
     </div>
-  )
+  );
 }
 
-export default App
+export default App;

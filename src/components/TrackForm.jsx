@@ -64,11 +64,10 @@ export default function TrackForm(props) {
       setLabel("");
       setRole("");
     }
-
   }
 
   return (
-    <div className="w-xl h-full p-8 octagone-16 bg-white">
+    <div className="w-xl h-full p-8 octagonee-12 bg-white">
       <form onSubmit={handleSubmit} className="flex flex-col gap-2">
         <h4>Track Title</h4>
         <input 

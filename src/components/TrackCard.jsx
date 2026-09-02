@@ -3,10 +3,10 @@ export default function TrackCard(props) {
   const isActive = track !== null && track !== undefined;
 
   return (
-    <div className="mt-8 border border-white octagonee-12 p-6">
+    <div className="mt-8 bg-white border border-white octagonee-8 p-6">
       <h2 className="text-2xl font-spotify font-bold mb-4">ACTIVE TRACK:</h2>
       {isActive ? (
-        <div className="space-y-2">
+        <div className="bg-white">
           <p>Title: {track.title}</p>
           <p>Genre: {track.genre}</p>
           <p>Artist: {track.artist}</p>
@@ -15,7 +15,7 @@ export default function TrackCard(props) {
           <p>Role: {track.role}</p>
         </div>
       ) : (
-        <p className="text-gray-400">Select a track from the table to see its details.</p>
+        <p className="bg-white text-gray-400">Select a track from the table to see its details.</p>
       )}
     </div>
   )

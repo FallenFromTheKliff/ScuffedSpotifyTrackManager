@@ -37,9 +37,8 @@ export default function TrackTable(props) {
 
     for (let j = 0; j < headerGroup.headers.length; j++) {
       const header = headerGroup.headers[j];
-
       headers.push(
-        <th key={header.id} className="border border-white px-4 py-2">
+        <th key={header.id} className="border border-white px-4 py-2 text-center">
           {header.column.columnDef.header}
         </th>
       );
@@ -53,9 +52,8 @@ export default function TrackTable(props) {
 
     for (let j = 0; j < cells.length; j++) {
       const cell = cells[j];
-
       rowCells.push(
-        <td key={cell.id} className="border border-white px-3 py-2">
+        <td key={cell.id} className="border border-white px-3 py-2 text-center">
           {cell.getValue()}
         </td>
       );
@@ -79,7 +77,7 @@ export default function TrackTable(props) {
     <div className="w-3xl">
       <h2 className="text-2xl font-bold mb-4">Track Registry</h2>
       <div className="h-80 overflow-y-auto">
-        <table className="w-full border-collapse border border-white octagonee-12 bg-white">
+        <table className="w-full border-collapse border border-white octagonee-8 bg-white">
           <thead>
             <tr>{headers}</tr>
           </thead>
@@ -91,7 +89,7 @@ export default function TrackTable(props) {
           type="button"
           onClick={() => table.previousPage()}
           disabled={!table.getCanPreviousPage()}
-          className="border octagonee-12 bg-white px-5 py-3 font-bold disabled:opacity-30"
+          className="rounded-lg bg-gray-700 text-white px-5 py-3 font-bold"
         >
           PREV
         </button>
@@ -102,7 +100,7 @@ export default function TrackTable(props) {
           type="button"
           onClick={() => table.nextPage()}
           disabled={!table.getCanNextPage()}
-          className="border octagonee-12 bg-white px-5 py-3 font-bold disabled:opacity-30"
+          className="rounded-lg bg-gray-700 text-white px-5 py-3 font-bold"
         >
           NEXT
         </button>

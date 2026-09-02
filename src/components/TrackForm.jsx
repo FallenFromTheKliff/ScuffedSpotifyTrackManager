@@ -34,16 +34,22 @@ export default function TrackForm(props) {
       setRoleError("Please select a role!");
     } else if (!title) {
       setTitleError("Please enter a track title!");
+    } else if (title.length < 3) {
+      setTitleError("Track title must be at least 3 characters long!");
     } else if (!genre) {
       setGenreError("Please select a genre!");
     } else if (!artist) {
       setArtistError("Please enter an artist name!");
-    } else if (!rating) {
+    } else if (artist.length < 3) {
+      setArtistError("Artist name must be at least 3 characters long!");
+    }else if (!rating) {
       setRatingError("Please enter a valid rating!");
     } else if (rating < 1 || rating > 100) {
       setRatingError("Rating / BPM must be between 1 and 100!");
     } else if (!label) {
       setLabelError("Please enter a label!");
+    } else if (label.length < 3) {
+      setLabelError("Label name must be at least 3 characters long!");
     } else if (!role) {
       setRoleError("Please select a role!");
     } else {
@@ -77,6 +83,8 @@ export default function TrackForm(props) {
             setTitle(iwantitthatway.target.value);
             if (!iwantitthatway.target.value) {
               setTitleError("Please enter a track title!");
+            } else {
+              setTitleError("");
             }
           }}
           placeholder="Enter a track title"
@@ -89,6 +97,8 @@ export default function TrackForm(props) {
             setGenre(iwantitthatway.target.value);
             if (!iwantitthatway.target.value) {
               setGenreError("Please select a genre!");
+            } else {
+              setGenreError("");
             }
           }}
         >
@@ -107,6 +117,8 @@ export default function TrackForm(props) {
             setArtist(iwantitthatway.target.value);
             if (!iwantitthatway.target.value) {
               setArtistError("Please enter an artist name!");
+            } else {
+              setArtistError("");
             }
           }}
           placeholder="Enter an artist name!"
@@ -124,6 +136,8 @@ export default function TrackForm(props) {
               setRatingError("Please enter a valid rating!");
             } else if (iwantitthatway.target.value < 1 || iwantitthatway.target.value > 100) {
               setRatingError("Rating / BPM must be between 1 and 100!");
+            } else {
+              setRatingError("");
             }
           }}
           placeholder="Enter a rating between 1-100!"
@@ -137,13 +151,15 @@ export default function TrackForm(props) {
             setLabel(iwantitthatway.target.value);
             if (!iwantitthatway.target.value) {
               setLabelError("Please enter a record label name!");
+            } else {
+              setLabelError("");
             }
           }}
           placeholder="Enter a record label name!"
         />
         <p className="text-red-500 text-xs h-4">{labelError}</p>
         <h4>User Role</h4>
-        <div>
+        <div className="flex flex-row gap-4">
           <input 
             type="radio"
             name="role"
@@ -168,7 +184,7 @@ export default function TrackForm(props) {
           <h4>"Listener"</h4>
         </div>
         <p className="text-red-500 text-xs h-4">{roleError}</p>
-        <button type="submit" className="bg-green-500 text-white px-4 py-2 rounded mt-4">ADD TRACK</button>
+        <button type="submit" className="bg-green-500 text-white px-4 py-2 rounded-lg mt-4">ADD TRACK</button>
       </form>
     </div>
   )

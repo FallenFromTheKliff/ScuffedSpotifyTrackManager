@@ -1,4 +1,4 @@
-import { tableFeatures, useTable } from '@tanstack/react-table';
+import { tableFeatures, useTable, rowPaginationFeature, createPaginatedRowModel } from '@tanstack/react-table';
 
 export default function TrackTable(props) {
   const columns = [
@@ -10,12 +10,21 @@ export default function TrackTable(props) {
     { header: "Role", accessorKey: "role" }
   ]
 
-  const features = tableFeatures({});
+  const features = tableFeatures({ rowPaginationFeature });
   const table = useTable({
     features: features,
     data: props.tracks,
-    columns: columns
-  });
+    columns: columns,
+    rowModels: {
+      paginatedRowModel: createPaginatedRowModel()
+    },
+    initialState: {
+      pagination: {
+      pageSize: 5,
+      pageIndex: 0
+      }
+    }
+   });
 
   const headers = [];
   const headerGroups = table.getHeaderGroups();
@@ -67,14 +76,37 @@ export default function TrackTable(props) {
   }
 
   return (
-    <div className="w-full">
+    <div className="w-3xl">
       <h2 className="text-2xl font-bold mb-4">Track Registry</h2>
-      <table className="w-full border-collapse border border-white octagonee-12 bg-white">
-        <thead>
-          <tr>{headers}</tr>
-        </thead>
-        <tbody>{rows}</tbody>
-      </table>
+      <div className="h-80 overflow-y-auto">
+        <table className="w-full border-collapse border border-white octagonee-12 bg-white">
+          <thead>
+            <tr>{headers}</tr>
+          </thead>
+          <tbody>{rows}</tbody>
+        </table>
+      </div>
+      <div className="flex justify-between items-center mt-4">
+        <button
+          type="button"
+          onClick={() => table.previousPage()}
+          disabled={!table.getCanPreviousPage()}
+          className="border octagonee-12 bg-white px-5 py-3 font-bold disabled:opacity-30"
+        >
+          PREV
+        </button>
+        <div className="text-white font-bold">
+          Page {table.state.pagination.pageIndex + 1} of {table.getPageCount()}
+        </div>
+        <button
+          type="button"
+          onClick={() => table.nextPage()}
+          disabled={!table.getCanNextPage()}
+          className="border octagonee-12 bg-white px-5 py-3 font-bold disabled:opacity-30"
+        >
+          NEXT
+        </button>
+      </div>
     </div>
   );
 }

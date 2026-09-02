@@ -81,7 +81,7 @@ export default function TrackForm(props) {
           }}
           placeholder="Enter a track title"
         />
-        {titleError && <p className="text-red-500">{titleError}</p>}
+        <p className="text-red-500 text-xs h-4">{titleError}</p>
         <h4>Genre</h4>
         <select
           value={genre}
@@ -98,7 +98,7 @@ export default function TrackForm(props) {
           <option value="Jazz">Jazz</option>
           <option value="Indie">Indie</option>
         </select>
-        {genreError && <p className="text-red-500">{genreError}</p>}
+        <p className="text-red-500 text-xs h-4">{genreError}</p>
         <h4>Artist Name</h4>
         <input 
           type="text"
@@ -111,7 +111,7 @@ export default function TrackForm(props) {
           }}
           placeholder="Enter an artist name!"
         />
-        {artistError && <p className="text-red-500">{artistError}</p>}
+        <p className="text-red-500 text-xs h-4">{artistError}</p>
         <h4>Rating / BPM</h4>
         <input 
           type="number"
@@ -128,7 +128,7 @@ export default function TrackForm(props) {
           }}
           placeholder="Enter a rating between 1-100!"
         />
-        {ratingError && <p className="text-red-500">{ratingError}</p>}
+        <p className="text-red-500 text-xs h-4">{ratingError}</p>
         <h4>Record Label Name</h4>
         <input 
           type="text"
@@ -141,7 +141,7 @@ export default function TrackForm(props) {
           }}
           placeholder="Enter a record label name!"
         />
-        {labelError && <p className="text-red-500">{labelError}</p>}
+        <p className="text-red-500 text-xs h-4">{labelError}</p>
         <h4>User Role</h4>
         <div>
           <input 
@@ -167,7 +167,7 @@ export default function TrackForm(props) {
           />
           <h4>"Listener"</h4>
         </div>
-        {roleError && <p className="text-red-500">{roleError}</p>}
+        <p className="text-red-500 text-xs h-4">{roleError}</p>
         <button type="submit" className="bg-green-500 text-white px-4 py-2 rounded mt-4">ADD TRACK</button>
       </form>
     </div>

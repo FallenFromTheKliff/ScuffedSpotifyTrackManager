@@ -29,8 +29,8 @@ function App() {
   }, [activeTrack, tracks]);
 
   return (
-    <div className="min-h-screen bg-black p-8">
-      <div className="w-full max-w-6xl item-center justify-center">
+    <div className="min-h-screen bg-black p-8 flex flex-col items-center justify-center">
+      <div className="w-full max-w-6xl flex flex-col items-center">
         <h1 className="text-4xl text-green-500 font-spotify font-bold mb-8 text-center">
           Scuffed Spotify Track Manager
         </h1>
@@ -57,11 +57,11 @@ function App() {
               onSelectTrack={handleRowSelection}
               creatorHighlight={creatorHighlight}
             />
-            {selectedTrack && <TrackCard track={selectedTrack} />}
+            <TrackCard track={selectedTrack} />
           </div>
         ) : (
           <div className="max-w-xl mx-auto">
-            <TrackForm onAddTrack={handleAdd} />
+            <TrackForm onAdd={handleAdd} />
             <button
               type="button"
               onClick={() => setShowTracks(true)}

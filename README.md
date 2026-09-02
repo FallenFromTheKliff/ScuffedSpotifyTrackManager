@@ -1,5 +1,12 @@
-# ScuffedSpotifyTracker
+# ScuffedSpotifyTrackManager
 
 ### Midterm Practical Assessment
 
-Done on 02/09/2026 by Jerome
+SET A: Spotify Track Playlist Manager
+
+Tech Stack
+- React
+- Tailwind CSS
+- TanStack Table
+
+Done on 02/09/2026 by jers
